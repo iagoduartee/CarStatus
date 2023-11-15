@@ -1,6 +1,14 @@
+package br.com.carstatusapi.Mapper;
+
+import br.com.carstatusapi.DTO.ClienteDTO;
+import br.com.carstatusapi.Entity.ClienteEntity;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClienteMapper {
-    public static app.CarStatus.Entity.ClienteEntity converterParaEntity(ClienteDTO cliente ){
-        app.CarStatus.Entity.ClienteEntity novaPessoa = new app.CarStatus.Entity.ClienteEntity();
+    public static ClienteEntity converterParaEntity(ClienteDTO cliente ){
+        ClienteEntity novaPessoa = new ClienteEntity();
         novaPessoa.setId(cliente.getId());
         novaPessoa.setNome(cliente.getNome());
         novaPessoa.setCpf(cliente.getCpf());
@@ -8,7 +16,7 @@ public class ClienteMapper {
         return novaPessoa;
     }
 
-    public static ClienteDTO converterParaDTO(app.CarStatus.Entity.ClienteEntity clienteEntity){
+    public static ClienteDTO converterParaDTO(ClienteEntity clienteEntity){
         ClienteDTO clienteDTO = new ClienteDTO();
         clienteDTO.setId(clienteEntity.getId());
         clienteDTO.setNome(clienteEntity.getNome());
@@ -16,16 +24,16 @@ public class ClienteMapper {
         return clienteDTO;
     }
 
-    public static List<ClienteDTO> converterListaParaDTO(List<app.CarStatus.Entity.ClienteEntity> listaEntity){
+    public static List<ClienteDTO> converterListaParaDTO(List<ClienteEntity> listaEntity){
         List<ClienteDTO> listaDTO = new ArrayList<>();
-        for(app.CarStatus.Entity.ClienteEntity cliente : listaEntity){
+        for(ClienteEntity cliente : listaEntity){
             listaDTO.add( ClienteMapper.converterParaDTO( cliente ));
         }
         return listaDTO;
     }
 
-    public static List<app.CarStatus.Entity.ClienteEntity> converterListaParaEntityO(List<ClienteDTO> listaDTO){
-        List<app.CarStatus.Entity.ClienteEntity> listaEntity = new ArrayList<>();
+    public static List<ClienteEntity> converterListaParaEntityO(List<ClienteDTO> listaDTO){
+        List<ClienteEntity> listaEntity = new ArrayList<>();
         for(ClienteDTO pessoa : listaDTO){
             listaEntity.add( ClienteMapper.converterParaEntity( pessoa ));
         }

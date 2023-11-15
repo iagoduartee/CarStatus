@@ -1,11 +1,21 @@
+package br.com.carstatusapi.Controller;
+
+import br.com.carstatusapi.DTO.ClienteDTO;
+import br.com.carstatusapi.Mapper.ClienteMapper;
+import br.com.carstatusapi.Service.ClienteService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 @RequestMapping( value = "api/cliente" )
 public class ClienteController {
-    @Autowired
     private ClienteService service;
 
     @PostMapping
-    public ResponseEntity<Object> salvarPessoa( @RequestBody ClienteDTO cliente ){
+    public ResponseEntity<Object> salvarPessoa(@RequestBody ClienteDTO cliente ){
         try{
             return new ResponseEntity<>( service.save( ClienteMapper.converterParaEntity(cliente) ), HttpStatus.CREATED );
         }catch (Exception e){

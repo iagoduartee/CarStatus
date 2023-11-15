@@ -1,18 +1,29 @@
+package br.com.carstatusapi.Service;
+
+import br.com.carstatusapi.DTO.ClienteDTO;
+import br.com.carstatusapi.Entity.ClienteEntity;
+import br.com.carstatusapi.Mapper.ClienteMapper;
+import br.com.carstatusapi.Repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
 @Service
 public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
     @Transactional( rollbackFor = Exception.class )
-    public ClienteDTO save(app.CarStatus.Entity.ClienteEntity pessoa ){
-        app.CarStatus.Entity.ClienteEntity novaPessoa = salvarEEditar( pessoa );
+    public ClienteDTO save(ClienteEntity pessoa ){
+        ClienteEntity novaPessoa = salvarEEditar( pessoa );
         return ClienteMapper.converterParaDTO( novaPessoa );
     }
 
     @Transactional( rollbackFor = Exception.class )
-    public ClienteDTO editar(app.CarStatus.Entity.ClienteEntity pessoa, Long id ){
+    public ClienteDTO editar(ClienteEntity pessoa, Long id ){
         pessoa.setId( id );
-        app.CarStatus.Entity.ClienteEntity novaPessoa = salvarEEditar( pessoa );
+        ClienteEntity novaPessoa = salvarEEditar( pessoa );
         return ClienteMapper.converterParaDTO(novaPessoa);
     }
 
@@ -24,7 +35,7 @@ public class ClienteService {
         return ClienteMapper.converterListaParaDTO( repository.findAll() );
     }
 
-    public app.CarStatus.Entity.ClienteEntity salvarEEditar(app.CarStatus.Entity.ClienteEntity pessoa ){
+    public ClienteEntity salvarEEditar(ClienteEntity pessoa ){
         return repository.save(pessoa);
     }
 
