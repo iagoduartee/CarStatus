@@ -21,13 +21,11 @@ public class ManutencaoEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private MecanicoEntity mecanico;
 
-    //To-do:
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //private CarroEntity carro;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CarroEntity carro;
 
-    //To-do:
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //private ClienteEntity cliente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ClienteEntity cliente;
 
     @Column(nullable = false)
     private Double valor;
@@ -38,11 +36,13 @@ public class ManutencaoEntity {
     @Column(nullable = false)
     private StatusEnum status;
 
-    public ManutencaoEntity(Long id, LocalDate dataInicio, LocalDate dataFinalizacao, MecanicoEntity mecanico, Double valor, String problema, StatusEnum status) {
+    public ManutencaoEntity(Long id, LocalDate dataInicio, LocalDate dataFinalizacao, ClienteEntity cliente, MecanicoEntity mecanico, CarroEntity carro, Double valor, String problema, StatusEnum status) {
         this.id = id;
         this.dataInicio = dataInicio;
         this.dataFinalizacao = dataFinalizacao;
+        this.cliente = cliente;
         this.mecanico = mecanico;
+        this.carro = carro;
         this.valor = valor;
         this.problema = problema;
         this.status = status;
@@ -75,12 +75,28 @@ public class ManutencaoEntity {
         this.dataFinalizacao = dataFinalizacao;
     }
 
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
     public MecanicoEntity getMecanico() {
         return mecanico;
     }
 
     public void setMecanico(MecanicoEntity mecanico) {
         this.mecanico = mecanico;
+    }
+
+    public CarroEntity getCarro() {
+        return carro;
+    }
+
+    public void setCarro(CarroEntity carro) {
+        this.carro = carro;
     }
 
     public Double getValor() {

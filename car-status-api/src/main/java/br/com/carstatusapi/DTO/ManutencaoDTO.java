@@ -8,20 +8,20 @@ public class ManutencaoDTO {
     private Long id;
     private LocalDate dataInicio;
     private LocalDate dataFinalizacao;
+    private ClienteDTO cliente;
     private MecanicoDTO mecanico;
-
-    //To-do:
-    //private ClienteDTO cliente;
-    //private CarroDTO carro;
+    private CarroDTO carro;
     private Double valor;
     private String problema;
     private StatusEnum status;
 
-    public ManutencaoDTO(Long id, LocalDate dataInicio, LocalDate dataFinalizacao, MecanicoDTO mecanico, Double valor, String problema, StatusEnum status) {
+    public ManutencaoDTO(Long id, LocalDate dataInicio, LocalDate dataFinalizacao, ClienteDTO cliente, MecanicoDTO mecanico, CarroDTO carro, Double valor, String problema, StatusEnum status) {
         this.id = id;
         this.dataInicio = dataInicio;
         this.dataFinalizacao = dataFinalizacao;
+        this.cliente = cliente;
         this.mecanico = mecanico;
+        this.carro = carro;
         this.valor = valor;
         this.problema = problema;
         this.status = status;
@@ -54,12 +54,28 @@ public class ManutencaoDTO {
         this.dataFinalizacao = dataFinalizacao;
     }
 
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
+
     public MecanicoDTO getMecanico() {
         return mecanico;
     }
 
     public void setMecanico(MecanicoDTO mecanico) {
         this.mecanico = mecanico;
+    }
+
+    public CarroDTO getCarro() {
+        return carro;
+    }
+
+    public void setCarro(CarroDTO carro) {
+        this.carro = carro;
     }
 
     public Double getValor() {
