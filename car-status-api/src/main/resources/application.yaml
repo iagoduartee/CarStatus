@@ -20,4 +20,12 @@ spring:
     h2:
         console:
             enabled: true
-            path: /console
+            path: /consolei
+logging:
+    level:
+        root: info
+        com:
+            example:
+                demo: debug
+    file:
+        name: log/app.log

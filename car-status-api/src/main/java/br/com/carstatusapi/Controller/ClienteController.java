@@ -3,6 +3,7 @@ package br.com.carstatusapi.Controller;
 import br.com.carstatusapi.DTO.ClienteDTO;
 import br.com.carstatusapi.Mapper.ClienteMapper;
 import br.com.carstatusapi.Service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping( value = "api/cliente" )
+@CrossOrigin(origins = "http://localhost:3000")
 public class ClienteController {
+    @Autowired
     private ClienteService service;
 
     @PostMapping
