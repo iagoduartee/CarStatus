@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping( value = "api/mecanico" )
+@CrossOrigin(origins = "http://localhost:3000")
 public class MecanicoController {
     @Autowired
     private MecanicoService service;

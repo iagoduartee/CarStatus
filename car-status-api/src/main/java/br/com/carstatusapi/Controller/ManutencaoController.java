@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping( value = "api/manutencao" )
+@CrossOrigin(origins = "http://localhost:3000/")
 public class ManutencaoController {
     @Autowired
     private ManutencaoService service;
@@ -20,6 +21,7 @@ public class ManutencaoController {
     @PostMapping
     public ResponseEntity<Object> salvarManutencao(@RequestBody ManutencaoDTO manutencao ){
         try{
+
             return new ResponseEntity<>( service.save( ManutencaoMapper.converterParaEntity(manutencao) ), HttpStatus.CREATED );
         }catch (Exception e){
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
@@ -39,6 +41,15 @@ public class ManutencaoController {
     public ResponseEntity<List<ManutencaoDTO>> buscarTodasManutencoesDeClientePorId(@PathVariable Long id){
         try {
             return new ResponseEntity<>( service.buscarTodosPorIdDoCliente(id), HttpStatus.OK );
+        }catch (Exception e){
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ManutencaoDTO>> buscarTodasManutencoes(){
+        try {
+            return new ResponseEntity<>( service.buscarTodos(), HttpStatus.OK );
         }catch (Exception e){
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
         }
